@@ -10,14 +10,16 @@ export class AuthGoogleService {
   private router = inject(Router);
 
   constructor() {
-    this.initConfiguration();
+   
+    let initConfig=this.initConfiguration();
+    //console.log('InitConfiguation:',initConfig)
   }
 
   initConfiguration() {
     const authConfig: AuthConfig = {
       issuer: 'https://accounts.google.com',
       strictDiscoveryDocumentValidation: false,
-      clientId: '',
+      clientId: '938574458194-dqt2lqtvjr8ckuh4q4ra3visbhv6ads9.apps.googleusercontent.com',
       redirectUri: window.location.origin + '/dashboard',
       scope: 'openid profile email',
     };
@@ -25,6 +27,7 @@ export class AuthGoogleService {
     this.oAuthService.configure(authConfig);
     this.oAuthService.setupAutomaticSilentRefresh();
     this.oAuthService.loadDiscoveryDocumentAndTryLogin();
+    ///console.log('oAuthService:',this.oAuthService)
   }
 
   login() {
